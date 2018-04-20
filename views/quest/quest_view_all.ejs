@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quest - View All</title>
+</head>
+<body>
+<h1>Quest</h1>
+<br/><a href="/quest/completed">Completed Quests</a>
+<table border = "1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>If Completed</th>
+        <th>Reward</th>
+    </tr>
+    <% for(var i = 0; i < quest.length; i++) { %>
+    <tr>
+        <td><%= quest[i].quest_id %></td>
+        <td><%= quest[i].quest_name %></td>
+        <td><%= quest[i].if_completed %></td>
+        <td><%= quest[i].reward %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deity - View All</title>
+</head>
+<body>
+<h1>Deity</h1>
+<table border = "1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Deity Of</th>
+        <th>Alignment</th>
+    </tr>
+    <% for(var i = 0; i < deity.length; i++) { %>
+    <tr>
+        <td><%= deity[i].deity_id %></td>
+        <td><%= deity[i].d_name %></td>
+        <td><%= deity[i].deityOf %></td>
+        <td><%= deity[i].d_alignment %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

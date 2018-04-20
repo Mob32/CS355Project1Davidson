@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Characters</title>
+</head>
+    <body>
+        <h1>Characters</h1>
+        <br/><a href="/characters/characters_party">Character - Party Connections</a>
+        <br/><a href="/characters/characters_player">Character - Player Connections</a>
+        <table border="'1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Alignment</th>
+                <th>Race</th>
+                <th>Class</th>
+                <th>Charisma</th>
+                <th>Wisdom</th>
+                <th>Strength</th>
+                <th>Dexterity</th>
+                <th>Constitution</th>
+                <th>Intelligence</th>
+                <th>Deity ID</th>
+                <th>Player ID</th>
+            </tr>
+            <% for(var i = 0; i < characters.length; i++) { %>
+                <tr>
+                    <td><%= characters[i].character_id %></td>
+                    <td><%= characters[i].c_name %></td>
+                    <td><%= characters[i].c_alignment %></td>
+                    <td><%= characters[i].c_race %></td>
+                    <td><%= characters[i].c_class %></td>
+                    <td><%= characters[i].charisma %></td>
+                    <td><%= characters[i].wisdom %></td>
+                    <td><%= characters[i].strength %></td>
+                    <td><%= characters[i].dexterity %></td>
+                    <td><%= characters[i].constitution %></td>
+                    <td><%= characters[i].intelligence %></td>
+                    <td><%= characters[i].deity_id %></td>
+                    <td><%= characters[i].player_id %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

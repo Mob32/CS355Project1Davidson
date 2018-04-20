@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quest - Add</title>
+</head>
+<body>
+<h1>Add New Quest</h1>
+<form action = "/quest/insert" method = "get">
+    Quest Name: <input name = "quest_name" type = "text"/>
+    If Completed: <input name = "if_completed" type = "number" min = "0" max = "1"/>
+    Reward: <input name = "reward" type = "text"/>
+    <br />
+    <br />
+    <h3>Party Who Completed</h3>
+    <% for(var i=0; party_result.length > i; i++) { %>
+    <input type= "checkbox" name="party_id" value="<%=
+        party_result[i].party_id %>"> <%= party_result[i].party_name + ', '
+    + party_result[i].numOfMembers %>
+    <br />
+    <% } %>
+    <input type = "submit" />
+
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Party - View All</title>
+</head>
+<body>
+<h1>Party</h1>
+<br/><a href="/characters/characters_party">Party - Character Connections</a>
+<br/><a href="/quest/completed">List of Completed Quests</a>
+<table border = "1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Number Of Members</th>
+    </tr>
+    <% for(var i = 0; i < party.length; i++) { %>
+    <tr>
+        <td><%= party[i].party_id %></td>
+        <td><%= party[i].party_name %></td>
+        <td><%= party[i].numOfMembers %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

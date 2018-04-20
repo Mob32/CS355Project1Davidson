@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Party - Character</title>
+</head>
+<body>
+<h1>Character - Party Connections</h1>
+<table border = "1">
+    <tr>
+        <th>Party Name</th>
+        <th>Character Name</th>
+    </tr>
+    <% for(var i = 0; i < character_party.length; i++) { %>
+    <tr>
+        <td><%= character_party[i].party_name %></td>
+        <td><%= character_party[i].c_name %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

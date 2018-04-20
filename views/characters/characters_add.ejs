@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character - Add</title>
+</head>
+<body>
+<h1>Add New Character</h1>
+<form action = "/characters/insert" method = "get">
+    Character Name: <input name = "c_name" type = "text"/>
+    Character Alignment: <input name = "c_alignment" type = "text"/>
+    Character Race: <input name = "c_race" type = "text"/>
+    Character Class: <input name = "c_class" type = "text"/>
+    <br/>
+    Charisma: <input name = "charisma" type = "number" min = "5" max = "20"/>
+    Wisdom: <input name = "wisdom" type = "number" min = "5" max = "20"/>
+    Strength: <input name = "strength" type = "number" min = "5" max = "20"/>
+    Dexterity: <input name = "dexterity" type = "number" min = "5" max = "20"/>
+    Constitution: <input name = "constitution" type = "number" min = "5" max = "20"/>
+    Intelligence: <input name = "intelligence" type = "number" min = "5" max = "20"/>
+    Deity ID: <input name = "deity_id" type = "number" min = "5" max = "20"/>
+    Player ID: <input name = "player_id" type = "number" min = "5" max = "20"/>
+    <br />
+    <br />
+    <h3>Associated With</h3>
+    <% for(var i=0; party_result.length > i; i++) { %>
+        <input type= "checkbox" name="party_id" value="<%=
+ party_result[i].party_id %>"> <%= party_result[i].party_name + ', '
+    + party_result[i].numOfMembers %>
+        <br />
+    <% } %>
+    <br />
+    <input type = "submit" />
+
+</form>
+</body>
+</html>

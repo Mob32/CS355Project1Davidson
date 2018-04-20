@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player - View All</title>
+</head>
+<body>
+<h1>Player</h1>
+<br/><a href="/characters/characters_player">Character - Player Connections</a>
+<table border = "1">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Number of Characters</th>
+    </tr>
+    <% for(var i = 0; i < player.length; i++) { %>
+    <tr>
+        <td><%= player[i].player_id %></td>
+        <td><%= player[i].email %></td>
+        <td><%= player[i].first_name %></td>
+        <td><%= player[i].last_name %></td>
+        <td><%= player[i].numOfCharacters %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>
