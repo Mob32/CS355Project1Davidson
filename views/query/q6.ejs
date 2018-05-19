@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 6</title>
+    <h2>Query 6 - GROUP BY</h2>
+    <p>
+        SELECT p.party_name, COUNT(quest_id) AS quests_completed
+        FROM party p
+        <br>
+        LEFT JOIN quest q ON q.party_id = p.party_id
+        GROUP BY p.party_id;
+    </p>
+    <p>
+        This query lists parties and the amount of quests they have completed
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Party Name</th>
+            <th>Quests Completed</th>
+        </tr>
+        <% for(var i = 0; i < q6.length; i++) { %>
+        <tr>
+            <td><%= q6[i].party_name %></td>
+            <td><%= q6[i].quests_completed %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

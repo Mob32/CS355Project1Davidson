@@ -7,11 +7,10 @@ var completed_dal = require('../dal/completed_dal');
 router.get('/all', function(req, res, next){
     quest_dal.getAll(function(err, result){
         if(err) {
-            console.log(err);
             res.send(err);
         }else{
-            console.log(result);
-            res.render('quest/quest_view_all', {quest: result[0]});
+            res.render('quest/quest_view_all', {quest: result[0],
+                was_successful: req.query.was_successful});
         }
     })
 });
@@ -47,6 +46,38 @@ router.get('/completed', function(req, res){
             res.render('quest/completed', {completed: result[0]});
         }
     })
+});
+
+router.get('/edit', function(req, res){
+    quest_dal.getinfo(req.query.quest_id, function(err,result){
+        if(err){ res.send(err);}
+        else{
+            res.render('quest/QuestUpdate',
+                {quest:result[0][0], quest_party:result[1]});
+        }
+    });
+});
+
+router.get('/update', function(req, res) {
+    quest_dal.update(req.query, function(err, result){
+        if(err) {
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/quest/all');
+        }
+    });
+});
+
+router.get('/delete', function(req, res){
+    quest_dal.delete(req.query.quest_id, function(err, quest_id){
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/quest/all?&was_successful=1');
+        }
+    });
 });
 
 module.exports = router;

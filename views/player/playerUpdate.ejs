@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player - Edit</title>
+</head>
+<body>
+<h1>Edit Player</h1>
+<form action = "/player/update" method = "get">
+    <input type = "hidden"
+           id="player_id"
+           name="player_id"
+           value="<%= player.player_id %>"
+    />
+    Player Email: <input
+            id= "email"
+            name = "email"
+            type = "text"
+            value = "<%= player.email %>"
+    />
+    <br>
+    Player First Name: <input
+            id="first_name"
+            name = "first_name"
+            type = "text"
+            value = "<%= player.first_name %>"
+    />
+    <br>
+    Player Last Name: <input
+            id="last_name"
+            name = "last_name"
+            type = "text"
+            value = "<%= player.last_name %>"
+    />
+    <br>
+    Number Of Characters: <input
+            id = "numOfCharacters"
+            name = "numOfCharacters"
+            type = "number"
+            min = 0
+            value = "<%= player.numOfCharacters%>"
+    />
+    <br />
+    <input type = "submit" />
+</form>
+    </body>
+</html>

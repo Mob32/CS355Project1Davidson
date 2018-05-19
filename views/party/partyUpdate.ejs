@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Party - Edit</title>
+</head>
+<body>
+<h1>Edit Party</h1>
+<form action = "/party/update" method = "get">
+    <input type = "hidden"
+           id="party_id"
+           name="party_id"
+           value="<%= party.party_id %>"
+    />
+    Party Name: <input
+            id= "party_name"
+            name = "party_name"
+            type = "text"
+            value = "<%= party.party_name %>"
+    />
+    <br>
+    Number of Members: <input
+            id="numOfMembers"
+            name = "numOfMembers"
+            type = "number"
+            min = 0
+            value = "<%= party.numOfMembers %>"
+    />
+    <br />
+    <p>
+        Edit Members:
+        <br />
+        <% for(var i =0; character_result.length > i;i++){
+            var checked = "";
+            if(character_result[i].party_id != null) {
+                checked = "checked";
+            }
+        %>
+        <input type = "checkbox" name="character_id" <%= checked %> value=
+        "<%=character_result[i].character_id %>"> <%= character_result[i].c_name
+        + ', ' + character_result[i].c_race + ', ' + character_result[i].c_class
+        + ', ' + character_result[i].c_alignment%>
+        <br />
+        <% } %>
+    </p>
+    <input type = "submit" />
+</form>
+</body>
+</html>

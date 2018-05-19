@@ -5,8 +5,18 @@
 </head>
 <body>
 <h1>Party</h1>
+<% if(locals.was_successful) { %>
+<div>
+    <div id="message">
+        Deletion was successful.
+    </div>
+</div>
+<% } %>
+<br>
+<a href = "/party/add"> Add New Party</a>
 <br/><a href="/characters/characters_party">Party - Character Connections</a>
 <br/><a href="/quest/completed">List of Completed Quests</a>
+<br>
 <table border = "1">
     <tr>
         <th>ID</th>
@@ -18,6 +28,14 @@
         <td><%= party[i].party_id %></td>
         <td><%= party[i].party_name %></td>
         <td><%= party[i].numOfMembers %></td>
+        <td>
+            <a href='/party/edit/?party_id=<%=party[i].party_id%>'>
+                Edit
+            </a>
+            &nbsp;<a href='/party/delete?party_id=<%= party[i].party_id %>'>
+                Delete
+            </a>
+        </td>
     </tr>
     <% } %>
 </table>

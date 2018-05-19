@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 3</title>
+    <h2>Query 3 - Subquery Using IN/NOT IN</h2>
+    <p>
+        SELECT * FROM player WHERE player_id NOT IN(
+        SELECT player_id FROM characters);
+    </p>
+    <p>
+        This query displays which players do not
+        have characters in the database
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Player ID</th>
+            <th>Email</th>
+            <th>Player First Name</th>
+            <th>Player Last Name</th>
+            <th>Number Of Characters</th>
+        </tr>
+        <% for(var i = 0; i < q3.length; i++) { %>
+        <tr>
+            <td><%= q3[i].player_id %></td>
+            <td><%= q3[i].email %></td>
+            <td><%= q3[i].first_name %></td>
+            <td><%= q3[i].last_name %></td>
+            <td><%= q3[i].numOfCharacters %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

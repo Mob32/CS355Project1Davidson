@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deity - Edit</title>
+</head>
+<body>
+<h1>Edit Deity</h1>
+<form action = "/deity/update" method = "get">
+    <input type = "hidden"
+           id="deity_id"
+           name="deity_id"
+           value="<%= deity.deity_id %>"
+    />
+    <br>
+    Deity Email: <input
+            id= "d_name"
+            name = "d_name"
+            type = "text"
+            value = "<%= deity.d_name %>"
+    />
+    <br>
+    Deity First Name: <input
+            id="deityOf"
+            name = "deityOf"
+            type = "text"
+            value = "<%= deity.deityOf %>"
+    />
+    <br>
+    Deity Last Name: <input
+            id="d_alignment"
+            name = "d_alignment"
+            type = "text"
+            value = "<%= deity.d_alignment %>"
+    />
+    <br />
+    <input type = "submit" />
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 1</title>
+    <h2>Query 1 - Correlated Subquery</h2>
+    <p>
+        SELECT  c_name, strength FROM characters c WHERE NOT EXISTS (
+        <br>
+        SELECT * FROM characters WHERE c.strength < strength);
+    </p>
+    <p>
+        This query finds the strongest character
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Character Name</th>
+            <th>Strength</th>
+        </tr>
+        <% for(var i = 0; i < q1.length; i++) { %>
+        <tr>
+            <td><%= q1[i].c_name %></td>
+            <td><%= q1[i].strength %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

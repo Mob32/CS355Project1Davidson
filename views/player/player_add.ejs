@@ -7,10 +7,12 @@
 <h1>Add New Player</h1>
 <form action = "/player/insert" method = "get">
     Email: <input name = "email" type = "email"/>
+    <br>
     First Name: <input name = "first_name" type = "text"/>
+    <br>
     Last Name: <input name = "last_name" type = "text"/>
-    Number of Characters: <input name = "numOfCharacters" type = "number"/>
-    <br />
+    <br>
+    Number of Characters: <input name = "numOfCharacters" type = "number" min = 0 />
     <br />
     <input type = "submit" />
 

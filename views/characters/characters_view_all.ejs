@@ -5,6 +5,14 @@
 </head>
     <body>
         <h1>Characters</h1>
+        <% if(locals.was_successful) { %>
+        <div>
+            <div id="message">
+                Deletion was successful.
+            </div>
+        </div>
+        <% } %>
+        <a href="/characters/add">Add New Character</a>
         <br/><a href="/characters/characters_party">Character - Party Connections</a>
         <br/><a href="/characters/characters_player">Character - Player Connections</a>
         <table border="'1">
@@ -22,6 +30,7 @@
                 <th>Intelligence</th>
                 <th>Deity ID</th>
                 <th>Player ID</th>
+                <th>Actions</th>
             </tr>
             <% for(var i = 0; i < characters.length; i++) { %>
                 <tr>
@@ -38,6 +47,14 @@
                     <td><%= characters[i].intelligence %></td>
                     <td><%= characters[i].deity_id %></td>
                     <td><%= characters[i].player_id %></td>
+                    <td>
+                        <a href='/characters/edit/?character_id=<%=characters[i].character_id%>'>
+                            Edit
+                        </a>
+                        &nbsp;<a href='/characters/delete?character_id=<%= characters[i].character_id %>'>
+                            Delete
+                        </a>
+                    </td>
                 </tr>
             <% } %>
         </table>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 4</title>
+    <h2>Query 4 - Subquery Using NOT EXISTS</h2>
+    <p>
+        SELECT c.c_name, c.c_class, c.c_race, c.c_alignment FROM characters c
+        <br>
+        WHERE NOT EXISTS (SELECT pc.character_id
+        <br>
+        FROM party_character pc WHERE pc.character_id = c.character_id);
+    </p>
+    <p>
+        This query displays which characters do not belong to any parties
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Character Name</th>
+            <th>Character Class</th>
+            <th>Character Race</th>
+            <th>Character Alignment</th>
+        </tr>
+        <% for(var i = 0; i < q4.length; i++) { %>
+        <tr>
+            <td><%= q4[i].c_name %></td>
+            <td><%= q4[i].c_class %></td>
+            <td><%= q4[i].c_race %></td>
+            <td><%= q4[i].c_alignment %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

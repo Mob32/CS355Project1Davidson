@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character - Edit</title>
+</head>
+<body>
+<h1>Edit Character</h1>
+<form action = "/characters/update" method = "get">
+    <input type= "hidden"
+           id="character_id"
+           name="character_id"
+           value="<%= characters.character_id %>"
+    />
+    Character Name: <input name = "c_name" type = "text" value="<%= characters.c_name %>"/>
+    <br>
+    Character Alignment: <input name = "c_alignment" type = "text" value="<%= characters.c_alignment %>"/>
+    <br>
+    Character Race: <input name = "c_race" type = "text" value="<%= characters.c_race %>"/>
+    <br>
+    Character Class: <input name = "c_class" type = "text" value="<%= characters.c_class %>"/>
+    <br/>
+    Charisma: <input name = "charisma" type = "number" min = "5" max = "20" value="<%= characters.charisma %>"/>
+    Wisdom: <input name = "wisdom" type = "number" min = "5" max = "20" value="<%= characters.wisdom %>"/>
+    <br>
+    Strength: <input name = "strength" type = "number" min = "5" max = "20" value="<%= characters.strength %>"/>
+    Dexterity: <input name = "dexterity" type = "number" min = "5" max = "20" value="<%= characters.dexterity %>"/>
+    <br>
+    Constitution: <input name = "constitution" type = "number" min = "5" max = "20" value="<%= characters.constitution %>"/>
+    Intelligence: <input name = "intelligence" type = "number" min = "5" max = "20" value="<%= characters.intelligence %>"/>
+    <br>
+    Follows: <select name = "deity_id">
+        <% for(var i=0;deityR.length > i;i++) {%>
+        <option value="<%= deityR[i].deity_id %>">
+            <%=deityR[i].d_name + ", God Of " + deityR[i].deityOf + ", "
+            + deityR[i].d_alignment%></option>
+        <%}%>
+    </select>
+    <br>
+    Created By: <select name = "player_id">
+        <% for(var i=0;players.length > i;i++) {%>
+        <option value="<%= players[i].player_id %>">
+            <%=players[i].first_name + " " + players[i].last_name + ", "
+            + players[i].numOfCharacters%></option>
+        <%}%>
+    </select>
+    <br />
+    <br />
+    <h3>Associated With:</h3>
+    <% for(var i=0; party.length > i; i++) {
+        var checked = "";
+        if(party[i].character_id != null) {
+            checked = "checked";
+        }
+    %>
+    <input type= "checkbox" name="party_id" <%= checked %> value="<%=
+        party[i].party_id %>"> <%= party[i].party_name + ', '
+    + party[i].numOfMembers %>
+    <br />
+    <% } %>
+    <br />
+    <input type = "submit" />
+
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 8&9</title>
+    <h2>Query 8&9 - Order By and UNION</h2>
+    <p>
+        SELECT d_name AS name, d_alignment AS alignment FROM deity
+        <br>
+        UNION
+        <br>
+        SELECT c_name, c_alignment FROM characters
+        ORDER BY alignment;
+    </p>
+    <p>
+        This query lists the alignments and names of the
+        characters and deities in the database, in alphabetical order
+        from of their name.
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Name</th>
+            <th>Alignment</th>
+        </tr>
+        <% for(var i = 0; i < q9.length; i++) { %>
+        <tr>
+            <td><%= q9[i].name %></td>
+            <td><%= q9[i].alignment %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

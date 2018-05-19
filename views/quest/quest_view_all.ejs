@@ -5,13 +5,23 @@
 </head>
 <body>
 <h1>Quest</h1>
-<br/><a href="/quest/completed">Completed Quests</a>
+<% if(locals.was_successful) { %>
+<div>
+    <div id="message">
+        Deletion was successful.
+    </div>
+</div>
+<% } %>
+<br>
+<a href="/quest/add">Add New Quest</a><br />
 <table border = "1">
     <tr>
         <th>ID</th>
         <th>Name</th>
         <th>If Completed</th>
         <th>Reward</th>
+        <th>Accepted By</th>
+        <th>Actions</th>
     </tr>
     <% for(var i = 0; i < quest.length; i++) { %>
     <tr>
@@ -19,6 +29,15 @@
         <td><%= quest[i].quest_name %></td>
         <td><%= quest[i].if_completed %></td>
         <td><%= quest[i].reward %></td>
+        <td><%= quest[i].party_id %></td>
+        <td>
+            <a href='/quest/edit/?quest_id=<%=quest[i].quest_id%>'>
+                Edit
+            </a>
+            &nbsp;<a href="/quest/delete?quest_id=<%= quest[i].quest_id %>">
+                Delete
+            </a>
+        </td>
     </tr>
     <% } %>
 </table>

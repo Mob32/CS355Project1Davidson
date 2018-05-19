@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 5</title>
+    <h2>Query 5 - Subquery Comparing Outer Value to Returned Inner Value</h2>
+    <p>
+        SELECT c_name, c_class, c_race, c_alignment, intelligence FROM characters c
+        WHERE intelligence > (SELECT AVG(intelligence) FROM characters);
+    </p>
+    <p>
+        This query displays which characters have above the average intelligence
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Character Name</th>
+            <th>Character Class</th>
+            <th>Character Race</th>
+            <th>Character Alignment</th>
+            <th>Intelligence</th>
+        </tr>
+        <% for(var i = 0; i < q5.length; i++) { %>
+        <tr>
+            <td><%= q5[i].c_name %></td>
+            <td><%= q5[i].c_class %></td>
+            <td><%= q5[i].c_race %></td>
+            <td><%= q5[i].c_alignment %></td>
+            <td><%= q5[i].intelligence %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

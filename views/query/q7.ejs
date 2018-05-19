@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 7</title>
+    <h2>Query 7 - JOIN, GROUP BY, HAVING and Derived Function</h2>
+    <p>
+        SELECT c.c_name, c.c_class, c.c_race, c.c_alignment,
+        COUNT(quest_id) AS quests_completed FROM characters c
+        <br>
+        JOIN party_character pc ON pc.character_id = c.character_id
+        JOIN party p ON p.party_id = pc.party_id
+        <br>
+        JOIN quest q ON q.party_id = p.party_id WHERE q.if_completed = 1
+        <br>
+        GROUP BY pc.character_id
+        HAVING quests_completed > 1;
+    </p>
+    <p>
+        This query displays which characters have completed more than 1 quest
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Character Name</th>
+            <th>Character Class</th>
+            <th>Character Race</th>
+            <th>Character Alignment</th>
+            <th>Quests Completed</th>
+        </tr>
+        <% for(var i = 0; i < q7.length; i++) { %>
+        <tr>
+            <td><%= q7[i].c_name %></td>
+            <td><%= q7[i].c_class %></td>
+            <td><%= q7[i].c_race %></td>
+            <td><%= q7[i].c_alignment %></td>
+            <td><%= q7[i].quests_completed %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

@@ -12,22 +12,36 @@ exports.getAll = function(callback){
 };
 
 exports.insert = function(params, callback){
-    var query = "INSERT INTO quest(quest_name, if_completed, reward) VALUES (?,?,?)";
+    var query = "INSERT INTO quest(quest_name, if_completed, reward, party_id) VALUES (?,?,?,?)";
     var queryData = [params.quest_name, params.if_completed, params.reward, params.party_id];
     connection.query(query, queryData, function(err, result){
-        if(err || params.party_id == undefined){
-            console.log(err);
-            callback(err, result);
-        }else{
-            var quest_id = result.insertId;
-            var query = 'INSERT INTO quest_party(quest_id, party_id) VALUES ?';
-            var questPartyData = [];
+        callback(err, result);
+    });
+};
 
-            questPartyData.push([quest_id, params.party_id]);
+exports.getinfo = function(quest_id, callback){
+    var query = 'CALL quest_getinfo(?)';
+    var queryData = [quest_id];
 
-            connection.query(query, [questPartyData], function(err, result){
-                callback(err, result);
-            });
-        }
+    connection.query(query, queryData, function(err, result){
+        callback(err, result);
+    });
+};
+
+exports.update = function(params, callback){
+    var query = 'UPDATE quest SET quest_name = ?, if_completed = ?, reward = ?, party_id = ? WHERE quest_id = ?';
+    var queryData = [params.quest_name, params.if_completed, params.reward, params.party_id, params.quest_id];
+
+    connection.query(query, queryData, function(err, result){
+        callback(err, result);
+    });
+};
+
+exports.delete = function(quest_id, callback){
+    var query = 'CALL quest_delete(?)';
+    var queryData = [quest_id];
+
+    connection.query(query, queryData, function(err, result){
+        callback(err, result);
     });
 };

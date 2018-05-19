@@ -7,21 +7,40 @@
 <h1>Add New Character</h1>
 <form action = "/characters/insert" method = "get">
     Character Name: <input name = "c_name" type = "text"/>
+    <br>
     Character Alignment: <input name = "c_alignment" type = "text"/>
+    <br>
     Character Race: <input name = "c_race" type = "text"/>
+    <br>
     Character Class: <input name = "c_class" type = "text"/>
     <br/>
     Charisma: <input name = "charisma" type = "number" min = "5" max = "20"/>
     Wisdom: <input name = "wisdom" type = "number" min = "5" max = "20"/>
+    <br>
     Strength: <input name = "strength" type = "number" min = "5" max = "20"/>
     Dexterity: <input name = "dexterity" type = "number" min = "5" max = "20"/>
+    <br>
     Constitution: <input name = "constitution" type = "number" min = "5" max = "20"/>
     Intelligence: <input name = "intelligence" type = "number" min = "5" max = "20"/>
-    Deity ID: <input name = "deity_id" type = "number" min = "5" max = "20"/>
-    Player ID: <input name = "player_id" type = "number" min = "5" max = "20"/>
+    <br>
+    Follows: <select name = "deity_id">
+        <% for(var i=0;deity.length > i;i++) {%>
+        <option value="<%= deity[i].deity_id %>">
+            <%=deity[i].d_name + ", God Of " + deity[i].deityOf + ", "
+            + deity[i].d_alignment%></option>
+        <%}%>
+    </select>
+    <br>
+    Created By: <select name = "player_id">
+        <% for(var i=0;player.length > i;i++) {%>
+        <option value="<%= player[i].player_id %>">
+            <%=player[i].first_name + " " + player[i].last_name + ", "
+            + player[i].numOfCharacters%></option>
+        <%}%>
+    </select>
     <br />
     <br />
-    <h3>Associated With</h3>
+    <h3>Associated With:</h3>
     <% for(var i=0; party_result.length > i; i++) { %>
         <input type= "checkbox" name="party_id" value="<%=
  party_result[i].party_id %>"> <%= party_result[i].party_name + ', '

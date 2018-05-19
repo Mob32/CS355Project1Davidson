@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School - Edit</title>
+</head>
+<body>
+<h1>Edit School</h1>
+<form action = "/quest/update" method = "get">
+    <input type= "hidden"
+           id="quest_id"
+           name="quest_id"
+           value="<%= quest.quest_id %>"
+    />
+    Quest Name: <input
+            id="quest_name"
+            name = "quest_name"
+            type = "text"
+            value="<%= quest.quest_name %>"
+    />
+    <br>
+    If Quest Completed: <input
+            id="if_completed"
+            name = "if_completed"
+            type = "number"
+            min = "0" max = "1"
+            value="<%= quest.if_completed %>"
+    />
+    <br>
+    Quest Name: <input
+            id="reward"
+            name = "reward"
+            type = "text"
+            value="<%= quest.reward %>"
+    />
+    <br>
+    Accepted By: <select name = "party_id">
+        <% for(var i=0;quest_party.length > i;i++) {%>
+        <option value="<%= quest_party[i].party_id %>">
+            <%=quest_party[i].party_name + ", " + quest_party[i].numOfMembers%></option>
+        <%}%>
+    </select>
+    <br />
+    <br>
+    <input type = "submit" />
+</form>
+</body>
+</html>

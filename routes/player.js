@@ -6,11 +6,10 @@ var character_player_dal = require('../dal/character_player_dal');
 router.get('/all', function(req, res, next){
     player_dal.getAll(function(err, result){
         if(err) {
-            console.log(err);
             res.send(err);
         }else{
-            console.log(result);
-            res.render('player/player_view_all', {player: result});
+            res.render('player/player_view_all', {player: result[0],
+                was_successful: req.query.was_successful});
         }
     })
 });
@@ -40,4 +39,37 @@ router.get('/characters_player', function(req, res){
         }
     })
 });
+
+router.get('/edit', function(req, res){
+    player_dal.getinfo(req.query.player_id, function(err,result){
+        if(err){ res.send(err);}
+        else{
+            res.render('player/PlayerUpdate',
+                {player:result[0][0]});
+        }
+    });
+});
+
+router.get('/update', function(req, res) {
+    player_dal.update(req.query, function(err,result){
+        if(err) {
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/player/all');
+        }
+    });
+});
+
+router.get('/delete', function(req, res){
+    player_dal.delete(req.query.player_id, function(err, player_id){
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/player/all?&was_successful=1');
+        }
+    });
+});
+
 module.exports = router;

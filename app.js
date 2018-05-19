@@ -12,6 +12,7 @@ var party = require('./routes/party');
 var quest = require('./routes/quest');
 var player = require('./routes/player');
 var deity = require('./routes/deity');
+var query = require('./routes/query');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/party', party);
 app.use('/deity', deity);
 app.use('/player', player);
 app.use('/quest', quest);
+app.use('/query', query);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 10</title>
+    <h2>Query 10 - Distinct</h2>
+    <p>
+        SELECT DISTINCT c.c_name, c.c_class, c.c_race, c.c_alignment FROM characters c
+        <br>
+        JOIN party_character pc ON pc.character_id = c.character_id
+        <br>
+        JOIN party p ON p.party_id = pc.party_id
+        <br>
+        ORDER BY c_name;
+    </p>
+    <p>
+        This query selects all characters who belong to a group without showing
+        duplicates of the characters who belong to multiple groups.
+    </p>
+    <table border = "1">
+        <tr>
+            <th>Character Name</th>
+            <th>Character Class</th>
+            <th>Character Race</th>
+            <th>Character Alignment</th>
+        </tr>
+        <% for(var i = 0; i < q10.length; i++) { %>
+        <tr>
+            <td><%= q10[i].c_name %></td>
+            <td><%= q10[i].c_class %></td>
+            <td><%= q10[i].c_race %></td>
+            <td><%= q10[i].c_alignment %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

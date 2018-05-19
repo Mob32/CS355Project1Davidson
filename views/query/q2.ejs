@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 2</title>
+    <h2>Query 2 - Subquery Using JOIN</h2>
+    <p>SELECT p.first_name, p.last_name, a.c_name FROM player p
+        <br>
+        JOIN (SELECT c_name, c.player_id FROM characters c
+        <br>
+        JOIN party_character pc ON pc.character_id = c.character_id
+        <br>
+        JOIN party pa ON pa.party_id = pc.party_id
+        <br>
+        JOIN quest q ON q.party_id = pa.party_id WHERE q.if_completed = 0)a
+        <br>
+        ON a.player_id = p.player_id
+        ORDER BY p.first_name;
+    </p>
+    <p>This query selects which players and which of their characters
+        are currently in the middle of quests </p>
+    <table border = "1">
+        <tr>
+            <th>Player First Name</th>
+            <th>Player Last Name</th>
+            <th>Character Name</th>
+        </tr>
+        <% for(var i = 0; i < q2.length; i++) { %>
+        <tr>
+            <td><%= q2[i].first_name %></td>
+            <td><%= q2[i].last_name %></td>
+            <td><%= q2[i].c_name %></td>
+        </tr>
+        <% } %>
+    </table>
+</head>
+</html>

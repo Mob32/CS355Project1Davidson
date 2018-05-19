@@ -7,17 +7,22 @@
 <h1>Add New Quest</h1>
 <form action = "/quest/insert" method = "get">
     Quest Name: <input name = "quest_name" type = "text"/>
+    <br>
+    <br>
     If Completed: <input name = "if_completed" type = "number" min = "0" max = "1"/>
+    <br>
+    <br>
     Reward: <input name = "reward" type = "text"/>
     <br />
+    <br>
+    Accepted By: <select name = "party_id">
+        <% for(var i=0;party_result.length > i;i++) {%>
+        <option value="<%= party_result[i].party_id %>">
+            <%=party_result[i].party_name + ", " + party_result[i].numOfMembers%></option>
+        <%}%>
+    </select>
+    <br>
     <br />
-    <h3>Party Who Completed</h3>
-    <% for(var i=0; party_result.length > i; i++) { %>
-    <input type= "checkbox" name="party_id" value="<%=
-        party_result[i].party_id %>"> <%= party_result[i].party_name + ', '
-    + party_result[i].numOfMembers %>
-    <br />
-    <% } %>
     <input type = "submit" />
 
 </form>
